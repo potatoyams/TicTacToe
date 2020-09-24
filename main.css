@@ -1,0 +1,18 @@
+#gameboard {
+    width: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    grid-template-rows: repeat(3, 3fr);
+    height: 200px;
+}
+
+.gamepieces {
+    text-align: center;
+    border: 2px;
+    border-style: solid;
+
+}
+
+.gamepieces:hover {
+    background-color: grey;
+}
