@@ -1,21 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Tic Tac Toe</title>
-        <link rel="stylesheet" href="main.css"/>
-    </head>
-    <body>
-        <div id="gameboard">
-            <div id="r0c0" class="gamepieces"></div>
-            <div id="r0c1" class="gamepieces"></div>            
-            <div id="r0c2" class="gamepieces"></div>            
-            <div id="r1c0" class="gamepieces"></div>            
-            <div id="r1c1" class="gamepieces"></div>            
-            <div id="r1c2" class="gamepieces"></div>            
-            <div id="r2c0" class="gamepieces"></div>            
-            <div id="r2c1" class="gamepieces"></div>
-            <div id="r2c2" class="gamepieces"></div>                        
+
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <div id="gameboard">
+        <div id="r0c0" class="gamepieces"></div>
+        <div id="r0c1" class="gamepieces"></div>
+        <div id="r0c2" class="gamepieces"></div>
+        <div id="r1c0" class="gamepieces"></div>
+        <div id="r1c1" class="gamepieces"></div>
+        <div id="r1c2" class="gamepieces"></div>
+        <div id="r2c0" class="gamepieces"></div>
+        <div id="r2c1" class="gamepieces"></div>
+        <div id="r2c2" class="gamepieces"></div>
+    </div>
+    <div class="player-score">
+        <p></p>
+        <p></p>
+    </div>
+    <div class="container">
+        <button id="resetGameBtn">Reset Game</button>
+        <button id="resetScoreBtn">Reset Score</button>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <h2>Are You Sure?</h2>
+            <div class="container">
+                <button>Yes</button>
+                <button>No</button>
+            </div>
         </div>
-        <script src="main.js"></script>
-    </body>
+
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
 </html>
