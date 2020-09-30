@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <h1>Tic Tac Toe</h1>
     <div id="gameboard">
         <div id="r0c0" class="gamepieces"></div>
         <div id="r0c1" class="gamepieces"></div>
@@ -29,16 +30,18 @@
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
-            <h2>Are You Sure?</h2>
-            <div class="container">
-                <button>Yes</button>
-                <button>No</button>
+            <h2 style="text-align: center; color: white;">Are You Sure?</h2>
+            <div class="confirm-container">
+                <button class="confirm-btn" id="ybtn">Yes</button>
+                <button class="confirm-btn" id="nbtn">No</button>
             </div>
         </div>
+    </div>
 
+    <div id="result">
+            
     </div>
 
     <script src="main.js"></script>

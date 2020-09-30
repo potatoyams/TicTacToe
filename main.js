@@ -2,23 +2,23 @@
 const Player = () => {
     const timesWon = 0;
     // For now, have default players have thier maker made up.
-    return {timesWon};
+    return { timesWon };
 };
 
 // Class that keeps track of the state of the game.
 const gameBoard = (() => {
-    var board = [[undefined, undefined, undefined],[undefined, undefined, undefined], [undefined, undefined, undefined]];
+    var board = [[undefined, undefined, undefined], [undefined, undefined, undefined], [undefined, undefined, undefined]];
     var moveCount = 0;
     const playerOne = Player();
     const playerTwo = Player();
 
 
     return {
-        board, 
+        board,
         moveCount,
         playerOne,
         playerTwo
-    };  
+    };
 })();
 
 // Class that keeps updates the game functionality.
@@ -37,19 +37,24 @@ const gameControl = (() => {
             }
             gameBoard.board[x][y] = marker;
             playerOneTurn = !playerOneTurn;
-            currPiece.textContent = marker;
+            var chosenMarker = document.createElement("p");
+            chosenMarker.textContent = marker
+            chosenMarker.classList.add("piece")
+            currPiece.appendChild(chosenMarker)
             if (checkWinner(x, y, marker)) {
                 if (!playerOneTurn) {
-                    alert("Player One Won");
+                    resultDiv = document.getElementById("result");
+                    resultDiv.textContent = "Player One Won";
                 } else {
-                    alert("Player Two Won");
+                    resultDiv = document.getElementById("result");
+                    resultDiv.textContent = "Player Two Won";
                 }
                 resetState();
                 updateGameScore();
             } else if (gameBoard.moveCount === Math.pow(3, 2)) {
-                alert("You Tied")
+                resultDiv = document.getElementById("result");
+                resultDiv.textContent = "Tie";
                 resetState();
-                console.log(gameBoard.board);
             }
         }
     };
@@ -65,44 +70,68 @@ const gameControl = (() => {
             if cell[i,n-i+1]=player then rdiag++
             if row=n or col=n or diag=n or rdiag=n then winner=true
         */
-       var col = 0;
-       var row = 0;
-       var diag = 0;
-       var rdiag = 0;
-       for (let i = 0; i < 3; i++) {
-           if (gameBoard.board[x][i] === marker) {
-               col++;
-           }
-           
-           if (gameBoard.board[i][y] === marker) {
-               row++;
-           }
+        var col = 0;
+        var row = 0;
+        var diag = 0;
+        var rdiag = 0;
+        for (let i = 0; i < 3; i++) {
+            if (gameBoard.board[x][i] === marker) {
+                col++;
+            }
 
-           if (gameBoard.board[i][i] === marker) {
-               diag++;
-           }
+            if (gameBoard.board[i][y] === marker) {
+                row++;
+            }
 
-           if (gameBoard.board[i][2 - i] === marker) {
-               rdiag++;
-           }
-       }
-       if (row === 3 || col === 3 || diag === 3 || rdiag === 3) {
-           if (marker === "X") {
-               gameBoard.playerOne.timesWon++;
-           } else {
-               gameBoard.playerTwo.timesWon++;
-           }
-        return true;
-       }
+            if (gameBoard.board[i][i] === marker) {
+                diag++;
+            }
+
+            if (gameBoard.board[i][2 - i] === marker) {
+                rdiag++;
+            }
+        }
+        if (row === 3 || col === 3 || diag === 3 || rdiag === 3) {
+            if (row === 3) {
+                for (let i = 0; i < 3; i++) {
+                    const currPiece = document.getElementById("r" + x + "c" + i);
+                    currPiece.setAttribute("style", "background-color: grey")
+                }
+            } else if (col === 3) {
+                for (let i = 0; i < 3; i++) {
+                    const currPiece = document.getElementById("r" + i + "c" + y);
+                    currPiece.setAttribute("style", "background-color: grey")
+                }
+            } else if (diag === 3) {
+                for (let i = 0; i < 3; i++) {
+                    const currPiece = document.getElementById("r" + i + "c" + i);
+                    currPiece.setAttribute("style", "background-color: grey")
+                }
+            } else {
+                for (let i = 0; i < 3; i++) {
+                    const currPiece = document.getElementById("r" + i + "c" + (2 - i));
+                    currPiece.setAttribute("style", "background-color: grey")
+                }
+            }
+            if (marker === "X") {
+                gameBoard.playerOne.timesWon++;
+            } else {
+                gameBoard.playerTwo.timesWon++;
+            }
+            return true;
+        }
     }
 
     function resetState() {
         // Having this function in gameBoard makes it so that state doesn't reset properly. 
-        gameBoard.board = [[undefined, undefined, undefined],[undefined, undefined, undefined], [undefined, undefined, undefined]];
+        gameBoard.board = [[undefined, undefined, undefined], [undefined, undefined, undefined], [undefined, undefined, undefined]];
         gameBoard.moveCount = 0;
         var gamePieces = document.querySelectorAll(".gamepieces");
         for (let currPiece of gamePieces) {
-            currPiece.textContent = "";
+            currPiece.removeAttribute("style");
+            while (currPiece.firstChild) {
+                currPiece.removeChild(currPiece.lastChild);
+            }
             /*
             currPiece.addEventListener("click", () => {
                 gameControl.makeMove(currPiece.id.charAt(1), currPiece.id.charAt(3));
@@ -110,9 +139,11 @@ const gameControl = (() => {
         }
     }
 
-    return {makeMove,
-    resetState}
-    })();
+    return {
+        makeMove,
+        resetState
+    }
+})();
 
 updateGameScore();
 
@@ -145,13 +176,22 @@ var modal = document.getElementById("myModal");
 var btn = document.getElementById("res");
 
 // When the user clicks on the button, open the modal
-resetScoreButton.onclick = function() {
-  modal.style.display = "block";
+resetScoreButton.onclick = function () {
+    modal.style.display = "block";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
+window.onclick = function (event) {
+    if (event.target == modal || event.target == nbtn) {
+        modal.style.display = "none";
+    }
+}
+
+var yesBtn = document.getElementById("ybtn");
+yesBtn.onclick = function () {
+    gameBoard.playerOne.timesWon = 0;
+    gameBoard.playerTwo.timesWon = 0;
     modal.style.display = "none";
-  }
-} 
+    updateGameScore();
+}
+
