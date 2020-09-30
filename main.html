@@ -24,8 +24,8 @@
         <p></p>
     </div>
     <div class="container">
-        <button id="resetGameBtn">Reset Game</button>
-        <button id="resetScoreBtn">Reset Score</button>
+        <button id="resetGameBtn" class="gBtn">Reset Game</button>
+        <button id="resetScoreBtn" class="gBtn">Reset Score</button>
     </div>
 
     <!-- The Modal -->
@@ -37,6 +37,21 @@
                 <button class="confirm-btn" id="ybtn">Yes</button>
                 <button class="confirm-btn" id="nbtn">No</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Player Input -->
+    <div id="playerInput" class="player-modal">
+        <div class="player-modal-content">
+            <form onsubmit="return false">
+                <label for="p1name">Player 1 Name: </label>
+                <input type="text" id="p1name" name="p1name" maxlength="20">
+                <br>
+                <br>
+                <label for="p2name">Player 2 Name: </label>
+                <input type="text" id="p2name" name="p2name" maxlength="20">
+                <input id="submitBtn" type="submit" value="Submit" />
+            </form>
         </div>
     </div>
 

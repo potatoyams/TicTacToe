@@ -1,17 +1,17 @@
 // Class that keeps track of player
-const Player = () => {
+const Player = (playerName) => {
+    this.playerName = playerName;
     const timesWon = 0;
     // For now, have default players have thier maker made up.
-    return { timesWon };
+    return { timesWon, playerName };
 };
 
 // Class that keeps track of the state of the game.
 const gameBoard = (() => {
     var board = [[undefined, undefined, undefined], [undefined, undefined, undefined], [undefined, undefined, undefined]];
     var moveCount = 0;
-    const playerOne = Player();
-    const playerTwo = Player();
-
+    var playerOne;
+    var playerTwo;
 
     return {
         board,
@@ -145,8 +145,6 @@ const gameControl = (() => {
     }
 })();
 
-updateGameScore();
-
 var gamePieces = document.querySelectorAll(".gamepieces");
 for (let currPiece of gamePieces) {
     currPiece.addEventListener("click", () => {
@@ -158,8 +156,8 @@ function updateGameScore() {
     var gamePieces = document.querySelector(".player-score").children;
     var playerOneStat = gamePieces[0];
     var playerTwoStat = gamePieces[1];
-    playerOneStat.textContent = "Player One: " + gameBoard.playerOne.timesWon;
-    playerTwoStat.textContent = "Player Two: " + gameBoard.playerTwo.timesWon;
+    playerOneStat.textContent = gameBoard.playerOne.playerName + " Score : " + gameBoard.playerOne.timesWon;
+    playerTwoStat.textContent = gameBoard.playerTwo.playerName + " Score : " + gameBoard.playerTwo.timesWon;
 }
 
 var resetGameButton = document.getElementById("resetGameBtn");
@@ -194,4 +192,25 @@ yesBtn.onclick = function () {
     modal.style.display = "none";
     updateGameScore();
 }
+
+var playerModal = document.getElementById("playerInput");
+var submitBtn = document.getElementById("submitBtn")
+submitBtn.addEventListener("click", () => {
+    playerModal.style.display = "none";
+    playerOneName = document.getElementById("p1name").value;
+    if (playerOneName === "") {
+        gameBoard.playerOne = Player("Player1");
+    } else {
+        gameBoard.playerOne = Player(playerOneName);
+    }
+
+    playerTwoName = document.getElementById("p2name").value;
+    if (playerTwoName === "") {
+        gameBoard.playerTwo = Player("Player2");
+    } else {
+        gameBoard.playerTwo = Player(playerTwoName);
+    }
+
+    updateGameScore();
+});
 

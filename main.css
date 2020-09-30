@@ -18,8 +18,8 @@ body {
     text-align: center;
     border: 2px;
     border-style: solid;
-
 }
+
 .piece {
     font-size: 30px;
     margin: 0;
@@ -54,75 +54,135 @@ h1 {
     margin-right: auto;
 }
 
- /* The Modal (background) */
- .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    margin: 15% auto; /* 15% from the top and centered */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+.player-modal {
+    display: block;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+
+.modal-content {
+    margin: 15% auto;
+    /* 15% from the top and centered */
     padding: 20px;
-    width: 50%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
+    width: 50%;
+    /* Could be more or less, depending on screen size */
+}
+
+.player-modal-content {
+    background-color: white;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    width: 50%;
+}
+
+input {
+    width: 100%;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+#submitBtn {
+    margin-top: 20px;
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* The Close Button */
+
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover, .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  } 
+}
 
-  .confirm-container {
+.confirm-container {
     display: flex;
     justify-content: space-around;
     margin-top: 10%;
-  }
+}
 
-  #ybtn {
-    background-color:#ff6666;
-  }
+#ybtn {
+    background-color: #ff6666;
+}
 
-  #ybtn:hover {
-    background-color:red;
-  }
+#ybtn:hover {
+    background-color: red;
+}
 
-  #nbtn {
-    background-color:#66ff66;
-  }
+#nbtn {
+    background-color: #66ff66;
+}
 
-  #nbtn:hover {
-    background-color:green;
-  }
+#nbtn:hover {
+    background-color: green;
+}
 
-  .confirm-btn {
-      width:200px;
-      border-radius: 10%;
-      border-color: #aaa;
-      padding-left: 10%;
-      padding-right: 10%;
-      font-size: xx-large;
-  }
+.confirm-btn {
+    width: 200px;
+    border-radius: 10%;
+    border-color: #aaa;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: xx-large;
+}
 
-  #result {
-      margin-top: 5%;
-      text-align: center;
-      font-size: 30px;
-  }
+#result {
+    margin-top: 5%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.gBtn {
+    font-size: 16px;
+    margin: 10px;
+}
